@@ -1,0 +1,82 @@
+@media (prefers-color-scheme: dark) {
+    html body {
+	background: #232729;
+    }
+
+    html .header {
+	background-image: url(/static/img/header.jpg);
+	border-left: 1px solid #0b0c0c;
+	border-right: 1px solid #0b0c0c;
+	border-bottom: 1px solid #0b0c0c;
+    }
+
+    html main {
+	background: #2c3133;
+	color: #ccc;
+	border-left: 1px solid #0b0c0c;
+	border-right: 1px solid #0b0c0c;
+    }
+
+    html .content.alt {
+	background: #33393b;
+    }
+
+    html a {
+	color: #ccc;
+    }
+
+    html .nav a {
+	background: #000;
+    }
+
+    .table-specs tr:nth-child(2n-1) {
+	background-color: rgba(255,255,255,0.1) !important;
+    }
+
+    div.border, img.border, video.border {
+	border: 1px solid #0b0c0c !important;
+    }
+
+    html .icon-button {
+	background: #000;
+    }
+
+    html .icon-button img {
+	filter: brightness(999%) brightness(80%);
+    }
+
+    html .devices div {
+	border: 1px solid #0b0c0c;
+	background: #2c3133;
+    }
+
+    html .devices img {
+	border: 1px solid #0b0c0c;
+	opacity: 0.8;
+    }
+
+    html .separator {
+	background-image: url(/static/img/header.jpg);
+	border-top: 1px solid #0b0c0c;
+	border-bottom: 1px solid #0b0c0c;
+    }
+
+    html footer {
+	background-image: url(/static/img/header.jpg);
+	border-left: 1px solid #0b0c0c;
+	border-right: 1px solid #0b0c0c;
+	border-top: 1px solid #0b0c0c;
+    }
+
+    html img.border,
+    html video.border,
+    html .grid-bottom img,
+    html .grid-bottom video {
+	border: 1px solid #0b0c0c;
+    }
+
+    html .codehilite {
+	background: black;
+	border: 1px solid #0b0c0c;
+    }
+}

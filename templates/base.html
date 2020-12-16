@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>{% block title %}postmarketOS{% endblock %}</title>
+
+        <meta name="description" content="Aiming for a 10 year life-cycle for smartphones">
+        <meta name="keywords" content="postmarketOS">
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="all">
+
+        <link rel="canonical" href="https://postmarketos.org{{ request.path }}">
+        <link rel="shortcut icon" href="/static/img/favicon.ico">
+        <link rel="stylesheet" href="/static/css/base.css">
+        <link rel="stylesheet" href="/static/css/dark.css">
+        <link rel="alternate" type="application/atom+xml" title="postmarketOS Blog" href="{ url_for('atom') }">
+        {% block extra_link %}{% endblock %}
+    </head>
+    <body>
+        <header class="header">
+            <a class="logo" name="^" href="/">
+                <img src="/logo.svg" alt="">
+                <span>postmarketOS</span>
+            </a>
+            <div class="nav">
+                <div class="nav-row1">
+                    <a href="https://postmarketos.org/blog">blog</a>
+                    <a href="https://wiki.postmarketos.org">wiki</a>
+                    <a href="https://gitlab.com/postmarketOS">src</a>
+                </div>
+                <div class="nav-row2">
+                    <a href="https://wiki.postmarketos.org/wiki/Matrix_and_IRC">matrix/irc</a>
+                    <a href="https://fosstodon.org/@postmarketOS">mastodon</a>
+                </div>
+                <div class="nav-row3">
+                    <a href="https://twitter.com/postmarketOS">twitter</a>
+                    <a href="https://reddit.com/r/postmarketOS">reddit</a>
+                </div>
+            </div>
+        </header>
+        <main class="main">
+            {% block body %}
+            {% endblock %}
+        </main>
+        <footer class="footer">
+            <div class="nav-bottom">
+                <!-- scroll to top: the JS version is slightly nicer, as it does not change the URL.
+                                    but the non-JS version works as well. -->
+                <a href="#^" onclick="window.scrollTo(0,0); return false" class="icon-button">
+                    <img src="/static/img/icons-numix/go-top-symbolic.svg" alt="">
+                    <span>back to top</span>
+                </a>
+                <a href="{{ url_for('atom') }}" class="icon-button">
+                    <img src="/static/img/icons-numix/application-rss+xml-symbolic.svg" alt="">
+                    <span>feed</span>
+                </a>
+                <a href="/privacy-policy.html" class="icon-button">
+                    <img src="/static/img/icons-numix/changes-secure-symbolic.svg" alt="">
+                    <span>privacy policy</span>
+                </a>
+            </div>
+            <div class="copyright">
+                &copy; 2020 postmarketOS.org contributors
+            </div>
+        </footer>
+    </body>
+</html>

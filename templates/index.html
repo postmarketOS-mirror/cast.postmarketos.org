@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}postmarketOS Postcast{% endblock %}
+
+{% block extra_link %}
+    <link rel="stylesheet" href="/static/css/page.css">
+    <link rel="stylesheet" href="/static/css/blog.css">
+{% endblock %}
+
+{% block body %}
+    <div class="title">
+        <h1>postmarketOS Podcast</h1>
+    </div>
+    <div class="separator"></div>
+
+    <article class="content alt">
+        {{ html|safe }}
+    </article>
+    <article class="content alt">
+        <h2>Episodes</h2>
+
+        {% for episode in episodes %}
+            <div class="post">
+                <a class="title" href="{{ episode.url }}">{{ episode.title }}</a>
+                <span class="date">{{ episode.date.strftime('%Y-%m-%d') }}</span>
+                <a class="file" href="{{ episode.opus }}">.opus</a>
+            </div>
+        {% endfor %}
+    </article>
+{% endblock %}

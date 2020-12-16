@@ -1,0 +1,7 @@
+*.pyc
+__pycache__
+
+/.venv
+/.idea
+
+/public_html

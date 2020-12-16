@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}postmarketOS podcast // {{ title }}{% endblock %}
+
+{% block extra_link %}
+    <link rel="stylesheet" href="/static/css/page.css">
+{% endblock %}
+
+{% block body %}
+    <div class="title">
+        <h1>{{ title | replace(":", ":\n") }}</h1>
+        <span class="date">{{ date.strftime('%B %d, %Y') }}</span>
+    </div>
+    <div class="separator"></div>
+
+    <article class="content alt">
+        <audio id="player" src="{{ opus }}" controls style="width: 100%"></audio>
+        <div id="jumpmarks">
+            <span>Jump to: </span>
+            {% for mark in timestamps %}
+                <a href="#{{ mark[2] }}" class="jump">{{ mark[1] }} ({{ mark[0] }})</a>
+            {% endfor %}
+        </div>
+        <a href="{{ opus }}">Download as .opus</a>
+        {{ html|safe }}
+    </article>
+
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            var player = document.getElementById('player');
+            if (location.hash.length > 1) {
+                // trigger preload
+                player.currentTime = location.hash.replace("#", "");
+            }
+            var jumpmarks = document.getElementById('jumpmarks');
+            jumpmarks.addEventListener('click', function (event) {
+                event.preventDefault();
+                if (event.target.tagName === "A") {
+                    player.currentTime = event.target.hash.replace("#", "");
+                    history.pushState(null, null, event.target.hash);
+                }
+                console.log(event);
+            })
+        });
+    </script>
+{% endblock %}
