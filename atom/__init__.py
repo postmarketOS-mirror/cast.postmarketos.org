@@ -143,7 +143,7 @@ class AtomFeed:
 
         encoded = tostring(rss, xml_declaration=True, encoding='utf-8',
                            method='xml')
-        return Response(encoded, mimetype='application/atom+xml')
+        return Response(encoded, mimetype='application/rss+xml')
 
 
 if __name__ == '__main__':

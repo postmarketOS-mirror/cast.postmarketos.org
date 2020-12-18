@@ -105,7 +105,7 @@ def logo_svg():
                     mimetype="image/svg+xml")
 
 
-@app.route('/feed.atom')
+@app.route('/feed.rss')
 def atom():
     feed = AtomFeed(author='postmarketOS',
                     feed_url=request.url,
