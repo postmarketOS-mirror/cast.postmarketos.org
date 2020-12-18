@@ -90,8 +90,8 @@ class AtomFeed:
         register_namespace('itunes',
                            'http://www.itunes.com/dtds/podcast-1.0.dtd')
 
-        top = Element('feed')
-        top.set('xmlns', 'http://www.w3.org/2005/Atom')
+        top = Element('rss')
+        top.set('xmlns:atom', 'http://www.w3.org/2005/Atom')
         top.set('xmlns:podcast',
                 'https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md')
         top.set('xmlns:itunes', 'http://www.itunes.com/dtds/podcast-1.0.dtd')
