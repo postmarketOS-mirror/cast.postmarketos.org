@@ -121,7 +121,7 @@ def atom():
                     cover_url=url_for('static',
                                       filename='img/cover.jpg',
                                       _external=True),
-                    summary="Your monthly postmarketOS podcast episodes")
+                    summary="For your postmarketOS podcast episodes")
 
     for episode in get_episodes():
         feed.add(content=episode['html'],
