@@ -56,13 +56,15 @@ class FeedEntry:
 
 class AtomFeed:
     def __init__(self, title=None, url=None, author=None, icon=None,
-                 feed_url=None):
+                 feed_url=None, cover_url=None, summary=None):
         self.title = title
         self.url = url
         self.author = author
         self.icon = icon
         self.feed_url = feed_url
         self.entries = []
+        self.summary = summary
+        self.cover_url = cover_url
         self.last_updated = None
 
     def add(self, content, title, url, updated, content_type=None, files=None,
@@ -126,6 +128,15 @@ class AtomFeed:
         it_author.text = 'postmarketOS'
         it_ex = SubElement(top, 'itunes:explicit')
         it_ex.text = 'no'
+
+        image_elem = SubElement(top, 'image')
+        image_url = SubElement(image_elem, 'url')
+        image_url.text = self.cover_url
+        image_title = SubElement(image_elem, 'title')
+        image_title.text = self.title
+
+        summary = SubElement(top, 'description')
+        summary.text = self.summary
 
         for entry in self.entries:
             entry.generate(top)

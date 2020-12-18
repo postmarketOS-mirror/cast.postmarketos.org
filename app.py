@@ -111,7 +111,11 @@ def atom():
                     feed_url=request.url,
                     icon=url_for('logo_svg', _external=True),
                     title='postmarketOS Podcast',
-                    url=url_for('home', _external=True))
+                    url=url_for('home', _external=True),
+                    cover_url=url_for('static',
+                                      filename='img/cover.jpg',
+                                      _external=True),
+                    summary="Your monthly postmarketOS podcast episodes")
 
     for episode in get_episodes():
         feed.add(content=episode['html'],
