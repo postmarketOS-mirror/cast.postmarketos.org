@@ -97,6 +97,7 @@ class AtomFeed:
         rss.set('xmlns:podcast',
                 'https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md')
         rss.set('xmlns:itunes', 'http://www.itunes.com/dtds/podcast-1.0.dtd')
+        rss.set("version", "2.0")
         top = SubElement(rss, "channel")
         title_elem = SubElement(top, "title")
         title_elem.text = self.title
