@@ -16,7 +16,7 @@ class FeedEntry:
         self.chapters = chapters
 
     def generate(self, feed):
-        top = SubElement(feed, 'entry')
+        top = SubElement(feed, 'item')
 
         title_elem = SubElement(top, "title")
         title_elem.text = self.title
@@ -29,7 +29,7 @@ class FeedEntry:
         updated_elem.text = self.updated.isoformat()
 
         link_elem = SubElement(top, 'link')
-        link_elem.set('href', self.url)
+        link_elem.text = self.url
 
         for file in self.files:
             enc_elem = SubElement(top, 'enclosure')
@@ -109,17 +109,10 @@ class AtomFeed:
         atom_link.set('type', 'application/rss+xml')
 
         updated_elem = SubElement(top, 'lastBuildDate')
-        updated_elem.text = self.last_updated.isoformat()
+        updated_elem.text = self.last_updated.strftime(' %Y %H:%M:%S %z')
 
         link1_elem = SubElement(top, 'link')
-        link1_elem.set('href', self.url)
-
-        author_elem = SubElement(top, 'author')
-        author_name_elem = SubElement(author_elem, 'name')
-        author_name_elem.text = self.author
-
-        icon_elem = SubElement(top, 'icon')
-        icon_elem.text = self.icon
+        link1_elem.text = self.url
 
         it_type = SubElement(top, 'itunes:type')
         it_type.text = 'episodic'
