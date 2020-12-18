@@ -26,7 +26,7 @@ class FeedEntry:
         id_elem.text = self.url
 
         updated_elem = SubElement(top, 'pubDate')
-        updated_elem.text = self.updated.isoformat()
+        updated_elem.text = self.updated.strftime('%a, %d %b %Y %H:%M:%S %z')
 
         link_elem = SubElement(top, 'link')
         link_elem.text = self.url
@@ -48,8 +48,7 @@ class FeedEntry:
         chapters.set('url', self.chapters)
         chapters.set('type', "application/json+chapters")
 
-        content_elem = SubElement(top, 'content')
-        content_elem.set('type', self.content_type)
+        content_elem = SubElement(top, 'description')
         content_elem.text = self.content
         content_elem = SubElement(top, 'itunes:summary')
         content_elem.text = self.content
@@ -109,7 +108,7 @@ class AtomFeed:
         atom_link.set('type', 'application/rss+xml')
 
         updated_elem = SubElement(top, 'lastBuildDate')
-        updated_elem.text = self.last_updated.strftime(' %Y %H:%M:%S %z')
+        updated_elem.text = self.last_updated.strftime('%a, %d %b %Y %H:%M:%S %z')
 
         link1_elem = SubElement(top, 'link')
         link1_elem.text = self.url
