@@ -21,7 +21,10 @@
                 <a href="#{{ mark[2] }}" class="jump">{{ mark[1] }} ({{ mark[0] }})</a>
             {% endfor %}
         </div>
-        <a href="{{ opus }}">Download as .opus</a>
+        <a href="{{ opus }}" class="btn">Download as .opus</a>
+    </article>
+    <div class="separator"></div>
+    <article class="content alt">
         {{ html|safe }}
     </article>
 
