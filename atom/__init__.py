@@ -90,12 +90,12 @@ class AtomFeed:
         register_namespace('itunes',
                            'http://www.itunes.com/dtds/podcast-1.0.dtd')
 
-        top = Element('rss')
-        top.set('xmlns:atom', 'http://www.w3.org/2005/Atom')
-        top.set('xmlns:podcast',
+        rss = Element('rss')
+        rss.set('xmlns:atom', 'http://www.w3.org/2005/Atom')
+        rss.set('xmlns:podcast',
                 'https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md')
-        top.set('xmlns:itunes', 'http://www.itunes.com/dtds/podcast-1.0.dtd')
-
+        rss.set('xmlns:itunes', 'http://www.itunes.com/dtds/podcast-1.0.dtd')
+        top = SubElement(rss, "channel")
         title_elem = SubElement(top, "title")
         title_elem.text = self.title
         title_elem.set('type', 'text')
@@ -130,7 +130,7 @@ class AtomFeed:
         for entry in self.entries:
             entry.generate(top)
 
-        encoded = tostring(top, xml_declaration=True, encoding='utf-8',
+        encoded = tostring(rss, xml_declaration=True, encoding='utf-8',
                            method='xml')
         return Response(encoded, mimetype='application/atom+xml')
 
