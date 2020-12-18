@@ -20,9 +20,9 @@ class FeedEntry:
 
         title_elem = SubElement(top, "title")
         title_elem.text = self.title
-        title_elem.set('type', 'text')
 
-        id_elem = SubElement(top, 'id')
+        id_elem = SubElement(top, 'guid')
+        id_elem.set('isPermaLink', "false")
         id_elem.text = self.url
 
         updated_elem = SubElement(top, 'pubDate')
@@ -102,20 +102,17 @@ class AtomFeed:
         top = SubElement(rss, "channel")
         title_elem = SubElement(top, "title")
         title_elem.text = self.title
-        title_elem.set('type', 'text')
 
-        id_elem = SubElement(top, 'id')
-        id_elem.text = self.feed_url
+        atom_link = SubElement(top, 'atom:link')
+        atom_link.set('href', self.feed_url)
+        atom_link.set('rel', 'self')
+        atom_link.set('type', 'application/rss+xml')
 
-        updated_elem = SubElement(top, 'updated')
+        updated_elem = SubElement(top, 'lastBuildDate')
         updated_elem.text = self.last_updated.isoformat()
 
         link1_elem = SubElement(top, 'link')
         link1_elem.set('href', self.url)
-
-        link2_elem = SubElement(top, 'link')
-        link2_elem.set('href', self.feed_url)
-        link2_elem.set('rel', 'self')
 
         author_elem = SubElement(top, 'author')
         author_name_elem = SubElement(author_elem, 'name')
