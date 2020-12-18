@@ -105,6 +105,12 @@ def logo_svg():
                     mimetype="image/svg+xml")
 
 
+def static_file_size(url):
+    host, filename = url.split('static/')
+    path = "static/" + filename
+    return os.path.getsize(path)
+
+
 @app.route('/feed.rss')
 def atom():
     feed = AtomFeed(author='postmarketOS',
@@ -126,7 +132,8 @@ def atom():
                  # midnight
                  updated=datetime.combine(episode['date'],
                                           datetime.min.time()), files=[
-                ('audio/opus', episode['opus'])
+                ('audio/opus', episode['opus'],
+                 static_file_size(episode['opus']))
             ])
     return feed.get_response()
 

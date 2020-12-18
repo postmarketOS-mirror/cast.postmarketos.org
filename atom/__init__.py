@@ -35,6 +35,7 @@ class FeedEntry:
             enc_elem = SubElement(top, 'enclosure')
             enc_elem.set('url', file[1])
             enc_elem.set('type', file[0])
+            enc_elem.set('length', str(file[2]))
 
         it_et = SubElement(top, 'itunes:episodeType')
         it_et.text = 'full'
