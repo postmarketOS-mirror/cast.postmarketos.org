@@ -24,6 +24,8 @@ def chapters():
 @freezer.register_generator
 def static_page():
     for f in listdir(PAGE_CONTENT_DIR):
+        if 'index' in f:
+            continue
         page = f[:-3]
         yield {'page': page}
 
