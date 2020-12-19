@@ -1,7 +1,13 @@
 title: postmarketOS Podcast
 ---
 
-Welcome to the postmarketOS podcast! The podcast where we talk with some core team members and discuss the history
-and future of postmarketOS.
+You just found the corner of the Internet, where a few of the postmarketOS core
+team members are talking about all things postmarketOS: historical anecdotes,
+current development news and ideas for the future. And we answer questions from
+our listeners too! Toot or tweet them with <code>#postmarketOSpodcast</code>.
 
-Any questions or feedback can be tooted or tweeted to the #postmarketOSpodcast hashtag
+Subscribe your podcatcher to:
+[`https://cast.postmarketos.org/feed.rss`](https://cast.postmarketos.org/feed.rss)
+
+Getting a proper podcast player for postmarketOS is discussed in
+[#872](https://gitlab.com/postmarketOS/pmaports/-/issues/872).
