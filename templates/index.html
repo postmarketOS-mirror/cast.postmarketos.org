@@ -8,15 +8,12 @@
 {% endblock %}
 
 {% block body %}
-    <div class="title">
-        <h1>postmarketOS Podcast</h1>
+    <div class="content alt">
+        <h2>postmarketOS development, for your ears</h2>
+        {{ html|safe}}
     </div>
     <div class="separator"></div>
-
-    <article class="content alt">
-        {{ html|safe }}
-    </article>
-    <article class="content alt">
+    <div class="content">
         <h2>Episodes</h2>
 
         {% for episode in episodes %}
