@@ -215,6 +215,7 @@ footer {
     align-items: center;
 
     background-image: url(/static/img/header.jpg);
+    background-position: bottom;
 }
 
 .nav-bottom {
