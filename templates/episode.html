@@ -15,16 +15,15 @@
 
     <article class="content alt">
         <audio id="player" src="{{ opus }}" controls style="width: 100%"></audio>
-        <div id="jumpmarks">
-            <span>Jump to: </span>
-            {% for mark in timestamps %}
-                <a href="#{{ mark[2] }}" class="jump">{{ mark[1] }} ({{ mark[0] }})</a>
-            {% endfor %}
-        </div>
-        <a href="{{ opus }}" class="btn">Download as .opus</a>
-    </article>
-    <div class="separator"></div>
-    <article class="content alt">
+        <small>
+            <div id="jumpmarks">
+                <span>Jump to: </span>
+                {% for mark in timestamps %}
+                    <a href="#{{ mark[2] }}" class="jump">{{ mark[1] }} ({{ mark[0] }})</a>
+                {% endfor %}
+            </div>
+            <a href="{{ opus }}" class="btn">Download as .opus</a>
+        </small>
         {{ html|safe }}
     </article>
 
