@@ -8,7 +8,7 @@
     display: grid;
     grid-template-areas: ".            . title"
                          "date         . title"
-                         "file         . title"
+                         "length       . title"
                          ".            . title";
     grid-template-columns: min-content 20px 1fr;
     grid-template-rows: 1fr
@@ -29,8 +29,8 @@
     font-size: 12pt;
 }
 
-.file {
-    grid-area: file;
+.length {
+    grid-area: length;
     color: gray;
     font-size: 9pt;
 }
@@ -38,14 +38,14 @@
 /* RESPONSIVENESS */
 @media screen and (max-width: 600px) {
     .post {
-        grid-template-areas: "date  .     file"
+        grid-template-areas: "date  .     length"
                              "title title title";
         grid-template-columns: min-content 10px 1fr;
         grid-template-rows: auto
                             auto;
         margin-bottom: 20px;
     }
-    .file {
+    .length {
         font-size: 12pt;
     }
 }

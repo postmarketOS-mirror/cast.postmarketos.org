@@ -3,7 +3,6 @@
 {% block title %}postmarketOS // podcast{% endblock %}
 
 {% block extra_link %}
-    <link rel="stylesheet" href="/static/css/page.css">
     <link rel="stylesheet" href="/static/css/blog.css">
 {% endblock %}
 
@@ -20,7 +19,7 @@
             <div class="post">
                 <a class="title" href="{{ episode.url }}">{{ episode.title }}</a>
                 <span class="date">{{ episode.date.strftime('%Y-%m-%d') }}</span>
-                <a class="file" href="{{ episode.opus }}">.opus</a>
+                <span class="length">({{ episode.length }})</span>
             </div>
         {% endfor %}
     </article>
