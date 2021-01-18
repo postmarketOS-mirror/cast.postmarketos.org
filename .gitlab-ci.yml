@@ -20,7 +20,7 @@ image: alpine:3.12
 build:
   <<: *only-default
   before_script:
-    - apk -q add python3 py3-pip
+    - apk -q add python3 py3-pip ffmpeg
     - python3 -m venv .venv
     - source .venv/bin/activate
     - pip3 -q install -r requirements.txt

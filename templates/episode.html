@@ -15,7 +15,10 @@
     <div class="separator"></div>
 
     <article class="content alt">
-        <audio id="player" src="{{ opus }}" controls style="width: 100%"></audio>
+        <audio id="player" controls style="width: 100%">
+            <source src="{{ opus }}" type="audio/ogg; codec=opus">
+            <source src="{{ mpeg }}" type="audio/mpeg">
+        </audio>
         <small>
             <div id="jumpmarks">
                 <span>Jump to: </span>
@@ -24,6 +27,7 @@
                 {% endfor %}
             </div>
             <a href="{{ opus }}" class="btn">Download as .opus</a>
+            <a href="{{ mpeg }}" class="btn">Download as .mp3</a>
         </small>
         {{ html|safe }}
     </article>

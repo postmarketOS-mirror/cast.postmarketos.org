@@ -1,4 +1,6 @@
 import collections
+import subprocess
+
 import logo
 import markdown
 import os
@@ -36,6 +38,9 @@ def parse_episode(post):
                                    _external=True)
     data['opus'] = url_for('static',
                            filename='audio/' + post.replace('.md', '.opus'),
+                           _external=True)
+    data['mpeg'] = url_for('static',
+                           filename='audio/' + post.replace('.md', '.mp3'),
                            _external=True)
     raw = data['timestamps']
     data['timestamps'] = []
@@ -111,8 +116,9 @@ def static_file_size(url):
     return os.path.getsize(path)
 
 
-@app.route('/feed.rss')
-def atom():
+@app.route('/feed-legacy.rss', defaults={"fmt": "mpeg"}, endpoint='legacyatom')
+@app.route('/feed.rss', defaults={"fmt": "opus"})
+def atom(fmt):
     feed = AtomFeed(author='postmarketOS',
                     feed_url=request.url,
                     icon=url_for('logo_svg', _external=True),
@@ -132,10 +138,19 @@ def atom():
                  # midnight
                  updated=datetime.combine(episode['date'],
                                           datetime.min.time()), files=[
-                ('audio/opus', episode['opus'],
-                 static_file_size(episode['opus']))
+                (f'audio/{fmt}', episode[fmt],
+                 static_file_size(episode[fmt]))
             ])
     return feed.get_response()
+
+
+@app.route("/static/audio/<file>.mp3")
+def generate_mp3(file):
+    static_path = f'static/audio/{file}.mp3'
+    opus = f'static/audio/{file}.opus'
+    if not os.path.isfile(static_path):
+        subprocess.run(['ffmpeg', '-i', opus, '-b:a', '320k', static_path])
+    return send_file(static_path, mimetype='audio/mpeg')
 
 
 @app.route('/<page>.html')

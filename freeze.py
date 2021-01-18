@@ -15,6 +15,13 @@ def episode():
 
 
 @freezer.register_generator
+def generate_mp3():
+    for f in listdir(CAST_CONTENT_DIR):
+        slug = f.replace(".md", "")
+        yield {'file': slug}
+
+
+@freezer.register_generator
 def chapters():
     for f in listdir(CAST_CONTENT_DIR):
         slug = f.replace(".md", "")

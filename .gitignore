@@ -5,3 +5,4 @@ __pycache__
 /.idea
 
 /public_html
+/static/audio/*.mp3
