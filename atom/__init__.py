@@ -6,7 +6,7 @@ from flask import Response
 
 class FeedEntry:
     def __init__(self, content, title, url, content_type, updated, files,
-                 chapters):
+                 chapters, guid=None):
         self.content = content
         self.title = title
         self.url = url
@@ -14,6 +14,7 @@ class FeedEntry:
         self.updated = updated
         self.files = files
         self.chapters = chapters
+        self.guid = guid
 
     def generate(self, feed):
         top = SubElement(feed, 'item')
@@ -23,7 +24,10 @@ class FeedEntry:
 
         id_elem = SubElement(top, 'guid')
         id_elem.set('isPermaLink', "false")
-        id_elem.text = self.url
+        if self.guid is None:
+            id_elem.text = self.url
+        else:
+            id_elem.text = self.guid
 
         updated_elem = SubElement(top, 'pubDate')
         updated_elem.text = self.updated.strftime('%a, %d %b %Y %H:%M:%S %z')
@@ -68,7 +72,7 @@ class AtomFeed:
         self.last_updated = None
 
     def add(self, content, title, url, updated, content_type=None, files=None,
-            chapters=None):
+            chapters=None, guid=None):
         if files is None:
             files = []
         if content_type is None:
@@ -83,7 +87,7 @@ class AtomFeed:
 
         self.entries.append(
             FeedEntry(content, title, url, content_type, updated, files,
-                      chapters))
+                      chapters, guid))
 
     def get_response(self):
         register_namespace('', 'http://www.w3.org/2005/Atom')

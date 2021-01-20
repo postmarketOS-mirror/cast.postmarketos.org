@@ -130,6 +130,10 @@ def atom(fmt):
                     summary="For your postmarketOS podcast episodes")
 
     for episode in get_episodes():
+        guid = None
+        if 'guid' in episode:
+            guid = episode['guid']
+
         feed.add(content=episode['html'],
                  content_type='html',
                  title=episode['title'],
@@ -140,7 +144,7 @@ def atom(fmt):
                                           datetime.min.time()), files=[
                 (f'audio/{fmt}', episode[fmt],
                  static_file_size(episode[fmt]))
-            ])
+            ], guid=guid)
     return feed.get_response()
 
 
