@@ -9,5 +9,10 @@ our listeners too! Toot or tweet them with <code>#postmarketOSpodcast</code>.
 Subscribe your podcatcher to:
 [`https://cast.postmarketos.org/feed.rss`](https://cast.postmarketos.org/feed.rss)
 
+<small>
+Apple devices need the legacy MP3 feed:
+[`https://cast.postmarketos.org/feed-legacy.rss`](https://cast.postmarketos.org/feed-legacy.rss)
+</small>
+
 Getting a proper podcast player for postmarketOS is discussed in
 [#872](https://gitlab.com/postmarketOS/pmaports/-/issues/872).
