@@ -6,6 +6,7 @@ timestamps:
   - 01:30 Welcome
   - 03:38 History
   - 23:05 Outro
+guid: "https://cast.postmarketos.org/episode/2020-12/"
 ---
 
 Our first podcast episode featuring @craftyguy, @PureTryOut, @z3ntu,

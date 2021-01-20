@@ -76,6 +76,12 @@ def home():
     return render_template('index.html', **data)
 
 
+@app.route('/episode/2020-12/')
+def first_episode_redirect():
+    # This episode used to have only the date as slug.
+    return render_template("redirect.html", url="/episode/01-History/")
+
+
 @app.route('/episode/<episode>/')
 def episode(episode):
     data = parse_episode(episode + '.md')
