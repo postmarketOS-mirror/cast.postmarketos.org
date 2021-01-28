@@ -6,7 +6,7 @@ from flask import Response
 
 class FeedEntry:
     def __init__(self, content, title, url, content_type, updated, files,
-                 chapters, guid=None):
+                 chapters, duration, guid=None):
         self.content = content
         self.title = title
         self.url = url
@@ -15,6 +15,7 @@ class FeedEntry:
         self.files = files
         self.chapters = chapters
         self.guid = guid
+        self.duration = duration
 
     def generate(self, feed):
         top = SubElement(feed, 'item')
@@ -48,6 +49,9 @@ class FeedEntry:
         it_ex = SubElement(top, 'itunes:explicit')
         it_ex.text = 'no'
 
+        it_duration = SubElement(top, 'itunes:duration')
+        it_duration.text = self.duration
+
         chapters = SubElement(top, 'podcast:chapters')
         chapters.set('url', self.chapters)
         chapters.set('type', "application/json+chapters")
@@ -72,7 +76,7 @@ class AtomFeed:
         self.last_updated = None
 
     def add(self, content, title, url, updated, content_type=None, files=None,
-            chapters=None, guid=None):
+            chapters=None, guid=None, duration=None):
         if files is None:
             files = []
         if content_type is None:
@@ -87,7 +91,7 @@ class AtomFeed:
 
         self.entries.append(
             FeedEntry(content, title, url, content_type, updated, files,
-                      chapters, guid))
+                      chapters, duration, guid))
 
     def get_response(self):
         register_namespace('', 'http://www.w3.org/2005/Atom')

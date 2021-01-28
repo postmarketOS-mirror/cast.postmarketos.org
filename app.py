@@ -144,6 +144,7 @@ def atom(fmt):
                  content_type='html',
                  title=episode['title'],
                  url=episode['url'],
+                 duration=episode['length'],
                  chapters=episode['chapters_url'],
                  # midnight
                  updated=datetime.combine(episode['date'],
