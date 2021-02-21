@@ -45,7 +45,7 @@ def parse_episode(post):
     raw = data['timestamps']
     data['timestamps'] = []
     for mark in raw:
-        time, label = mark.split(' ')
+        time, label = mark.split(' ', maxsplit=1)
         minutes, seconds = time.split(':')
         seconds = float(seconds) + (60 * int(minutes))
         data['timestamps'].append([time, label, seconds])
