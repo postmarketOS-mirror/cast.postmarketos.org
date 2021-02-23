@@ -14,5 +14,5 @@ Apple devices need the legacy MP3 feed:
 [`https://cast.postmarketos.org/feed-legacy.rss`](https://cast.postmarketos.org/feed-legacy.rss)
 </small>
 
-Getting a proper podcast player for postmarketOS is discussed in
-[#872](https://gitlab.com/postmarketOS/pmaports/-/issues/872).
+Find podcast apps for postmarketOS
+[in the wiki](https://wiki.postmarketos.org/wiki/Applications_by_category#Podcast_apps).
